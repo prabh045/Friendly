@@ -35,10 +35,4 @@ struct User: Decodable {
     let registered: Date
     let tags: [String]
     let friends: [Friend]
-    
-    var registeredDate: String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd MMM yyyy"
-        return dateFormatter.string(from: registered)
-    }
 }

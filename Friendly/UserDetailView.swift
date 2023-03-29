@@ -7,31 +7,31 @@
 
 import SwiftUI
 
-struct FriendDetailView: View {
-    typealias Friend = User
-    var friend: Friend
+struct UserDetailView: View {
+    typealias UserDetail = FetchedResults<CachedUser>.Element
+    var friend: UserDetail
     var body: some View {
         Form {
             Section("Contact Info") {
                 Group {
-                    Text(friend.name)
-                    Text(friend.email)
-                    Text(friend.address)
-                    Text("\(friend.age) and kickin :). Works at \(friend.company)")
+                    Text(friend.userName)
+                    Text(friend.userEmail)
+                    Text(friend.userAddress)
+                    Text("\(friend.age) and kickin :). Works at \(friend.userCompany)")
                 }
                 .foregroundColor(.brown)
             }
             Section("About") {
-                Text(friend.about)
+                Text(friend.userAddress)
                // Text("Registered: \(friend.registeredDate)")
             }
             Section("Friend List") {
-                List(friend.friends, id: \.id) { friend in
-                    Text(friend.name)
+                List(friend.friendsList, id: \.id) { friend in
+                    Text(friend.friendName)
                 }
             }
         }
-        .navigationTitle(friend.name)
+        .navigationTitle(friend.userName)
         .navigationBarTitleDisplayMode(.inline)
     }
 }
