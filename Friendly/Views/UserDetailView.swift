@@ -23,7 +23,6 @@ struct UserDetailView: View {
             }
             Section("About") {
                 Text(friend.userAddress)
-               // Text("Registered: \(friend.registeredDate)")
             }
             Section("Friend List") {
                 List(friend.friendsList, id: \.id) { friend in

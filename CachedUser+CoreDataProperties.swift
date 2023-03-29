@@ -33,7 +33,7 @@ extension CachedUser {
         return name ?? "n/a"
     }
     public var userAge: Int {
-        return Int(age ?? -1)
+        return Int(age)
     }
     public var userCompany: String {
         return company ?? "n/a"
@@ -53,7 +53,7 @@ extension CachedUser {
         return dateFormatter.string(from: registered ?? Date.now)
     }
     public var friendsList: [CachedFriend] {
-        var set = friends as? Set<CachedFriend> ?? []
+        let set = friends as? Set<CachedFriend> ?? []
         print("set is \(set)")
         return set.sorted { (first, second) in
             first.friendName < second.friendName

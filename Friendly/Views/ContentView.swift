@@ -37,10 +37,12 @@ struct ContentView: View {
             .padding(.bottom)
         }
         .task {
-            print("Ran task")
+            print("Fetching users")
             if cachedUsers.isEmpty {
                 let userList = await getUsers()
                 print("gotton users, now saving")
+                //saving on main because UI maybe updating at the same time when we get users, so we dont want coredata and ui updates at same time
+                //we dont want coredata to change underneath swiftUI
                 await MainActor.run {
                     saveUsers(userList: userList)
                 }
@@ -51,8 +53,7 @@ struct ContentView: View {
         let result = await UserServiceGeneric<User>().fetchUsers(urlString: "https://www.hackingwithswift.com/samples/friendface.json")
         switch result {
         case .success(let user):
-            //print("user is \(user)")
-           // saveUsers(userList: user)
+            print("user is \(user)")
             return user
         case .failure(let error):
             print("error is \(error.localizedDescription)")

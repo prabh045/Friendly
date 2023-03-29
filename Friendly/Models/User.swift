@@ -7,18 +7,6 @@
 
 import Foundation
 
-//class User: ObservableObject, Decodable {
-//    @Published var users = [UserModel]()
-//    enum CodingKeys: CodingKey {
-//        case user
-//    }
-//    required init(from decoder: Decoder) throws {
-//        let container = try decoder.container(keyedBy: CodingKeys.self)
-//        self.users = try container.decode([UserModel].self, forKey: .user)
-//    }
-//    init() {}
-//}
-
 struct User: Decodable {
     struct Friend: Decodable {
         let id: String
